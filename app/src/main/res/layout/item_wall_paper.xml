@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--绑定数据-->
+    <data>
+        <variable
+            name="wallpeaper"
+            type="com.example.androidmvvmtest.network.bean.response.WallPaperResponse.ResBean.VerticalBean" />
+
+        <variable
+            name="click"
+            type="com.example.androidmvvmtest.ui.adapter.WallPaperAdapter.ClickBinding" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{()->click.itemClick(wallpeaper,view)}">
+
+        <com.example.androidmvvmtest.view.CustomImageView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="5dp"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/RoundedStyle"
+            networkUrl="@{wallpeaper.img}"/>
+
+    </LinearLayout>
+
+</layout>

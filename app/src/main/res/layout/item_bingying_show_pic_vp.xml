@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="wallPaper"
+            type="com.example.androidmvvmtest.db.room.entity.WallPaper" />
+    </data>
+
+    <com.example.androidmvvmtest.view.CustomImageView
+        android:id="@+id/img"
+        networkUrl="@{wallPaper.img}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="center" />
+
+</layout>
