@@ -59,17 +59,21 @@
             android:text="登  录"
             app:cornerRadius="12dp" />
 
+
+        <!--隐藏起来先-->
         <TextView
             android:id="@+id/tv_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.user.account}" />
+            android:text="@{viewModel.user.account}"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/tv_pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{viewModel.user.pwd}" />
+            android:text="@{viewModel.user.pwd}"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

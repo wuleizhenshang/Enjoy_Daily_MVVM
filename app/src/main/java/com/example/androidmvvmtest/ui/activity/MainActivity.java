@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import com.example.androidmvvmtest.base.BaseActivity;
 import com.example.androidmvvmtest.ui.adapter.VPAdapter;
 import com.example.androidmvvmtest.repository.NewsRepository;
 import com.example.androidmvvmtest.databinding.ActivityMainBinding;
@@ -24,7 +25,7 @@ import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     ActivityMainBinding mBinding;//自动生成的，为Activity+。。。或Fragment+。。。
     private VPAdapter mAdapter;//VP的Adapter
     private static final String TAG = "TAGG";

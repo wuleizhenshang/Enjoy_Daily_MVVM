@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.os.Bundle;
 
+import com.example.androidmvvmtest.base.BaseActivity;
 import com.example.androidmvvmtest.ui.adapter.WallPaperAdapter;
 import com.example.androidmvvmtest.network.bean.response.BiYingResponse;
 import com.example.androidmvvmtest.network.bean.response.WallPaperResponse;
@@ -16,7 +17,7 @@ import com.example.androidmvvmtest.databinding.ActivityBingPicBinding;
 import com.example.androidmvvmtest.viewmodels.BingPicViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 
-public class BingPicActivity extends AppCompatActivity {
+public class BingPicActivity extends BaseActivity {
 
     ActivityBingPicBinding mBinding;
 

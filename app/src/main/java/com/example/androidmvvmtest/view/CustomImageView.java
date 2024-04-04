@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.BindingAdapter;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.androidmvvmtest.R;
 import com.example.androidmvvmtest.utils.KLog;
 import com.example.androidmvvmtest.base.BaseApplication;
@@ -36,7 +37,12 @@ public class CustomImageView extends ShapeableImageView {
     public static void setBiyingUrl(ImageView imageView, String url) {
         String assembleUrl = "http://cn.bing.com" + url;
         KLog.d(assembleUrl);
-        Glide.with(BaseApplication.getContext()).load(assembleUrl).into(imageView);
+        Glide.with(BaseApplication.getContext())
+                .load(assembleUrl)
+                .placeholder(R.drawable.bg_pic_loading)
+                .fallback(R.drawable.bg_pic_loading)
+                .error(R.drawable.bg_pic_load_fail)
+                .into(imageView);
     }
 
     /**
@@ -48,8 +54,14 @@ public class CustomImageView extends ShapeableImageView {
     public static void setNetworkUrl(ImageView imageView, String url) {
         Glide.with(BaseApplication.getContext())
                 .load(url)
-                .placeholder(R.drawable.bg_pic_loading)
-                .error(R.drawable.bg_pic_load_fail)
+                .apply(OPTIONS)//TODO 可以直接通过这种方式设置，这样多个设置相同的代码就可以写到一起
                 .into(imageView);
     }
+
+
+    private static final RequestOptions OPTIONS = new RequestOptions()
+            .placeholder(R.drawable.bg_pic_loading)//图片加载出来前，显示的图片
+            .fallback(R.drawable.bg_pic_loading) //url为空的时候,显示的图片
+            .error(R.drawable.bg_pic_load_fail);//图片加载失败后，显示的图片
+
 }

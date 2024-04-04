@@ -7,26 +7,35 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.androidmvvmtest.R;
+import com.example.androidmvvmtest.databinding.FragmentVideoBinding;
+import com.example.androidmvvmtest.viewmodels.VideoViewModel;
 
 /**
  * @Author wuleizhenshang
  * @Email wuleizhenshang@163.com
  * @Date 2024/4/3 23:44
- * @Description: TODO
+ * @Description: 展示视频信息列表的fragment
  */
 public class VideoFragment extends Fragment {
 
-
+    private VideoViewModel mVideoViewModel;
+    private FragmentVideoBinding mVideoBinding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        mVideoBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_video, container, false);
+        return mVideoBinding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mVideoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
     }
 }

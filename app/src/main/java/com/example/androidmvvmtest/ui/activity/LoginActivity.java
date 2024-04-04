@@ -12,15 +12,16 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
 import com.example.androidmvvmtest.R;
+import com.example.androidmvvmtest.base.BaseActivity;
 import com.example.androidmvvmtest.bean.User;
 import com.example.androidmvvmtest.databinding.ActivityLoginBinding;
+import com.example.androidmvvmtest.utils.Constant;
+import com.example.androidmvvmtest.utils.MVUtils;
 import com.example.androidmvvmtest.viewmodels.LoginViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class LoginActivity extends AppCompatActivity {
-
-
+public class LoginActivity extends BaseActivity {
     ActivityLoginBinding mBinding;
 
     LoginViewModel mLoginViewModel;
@@ -43,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         mLoginViewModel = new LoginViewModel();
 
         //让model有数据
-        mUser = new User("AA", "BB");
+        mUser = new User("wuleizhenshang", "wuleizhenshang");
         mLoginViewModel.getUser().setValue(mUser);
 
         //获取观察对象
@@ -59,15 +60,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (mLoginViewModel.getUser().getValue().getAccount().isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "请输入账号", Toast.LENGTH_SHORT).show();
+                    showSortMsg("请输入账号");
                     return;
                 }
                 if (mLoginViewModel.getUser().getValue().getPwd().isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                    showSortMsg("请输入密码");
                     return;
                 }
-                Toast.makeText(LoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(LoginActivity.this, BingPicActivity.class));
+                showSortMsg("登录成功！");
+                //记录登录
+                MVUtils.getBoolean(Constant.IS_LOGIN,true);
+                jumpActivity(BingPicActivity.class);
             }
         });
 
