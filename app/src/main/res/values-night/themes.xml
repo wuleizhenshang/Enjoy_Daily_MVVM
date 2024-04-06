@@ -21,6 +21,11 @@
         <item name="cornerSize">15%</item>
     </style>
 
+    <!--ShapeableImageView 新闻圆角-->
+    <style name="RoundedNewStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8%</item>
+    </style>
 
     <!--ShapeableImageView 圆 -->
     <style name="CircleStyle">
@@ -40,5 +45,15 @@
     <!--启动页的主题样式-->
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:statusBarColor" tools:targetApi="lollipop">#00FFFFFF</item><!--设置状态栏的颜色-->
+    </style>
+
+    <!--选中的样式-->
+    <style name="bottom_tab_title_active">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--没有选中的样式，导航默认的字体大小就是14sp-->
+    <style name="bottom_tab_title_inactive">
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

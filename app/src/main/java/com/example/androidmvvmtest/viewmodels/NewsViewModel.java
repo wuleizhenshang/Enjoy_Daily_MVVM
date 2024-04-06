@@ -19,14 +19,12 @@ public class NewsViewModel extends ViewModel {
     //内容
     public String select;
 
-
-
     //新闻标题
     public MutableLiveData<List<String>> newsTitleList;
 
     public MutableLiveData<List<String>> getNewsTitleList() {
         if (newsTitleList==null){
-            newsTitleList = new NewsRepository().getNewsTitle();
+            newsTitleList = new NewsRepository().getNewsCategory();
         }
         return newsTitleList;
     }
@@ -35,6 +33,6 @@ public class NewsViewModel extends ViewModel {
     public MutableLiveData<List<NewsResponseBean.NewsBean>> mNewsBean;
 
     public MutableLiveData<List<NewsResponseBean.NewsBean>> getNewsBean(String name, int num, int start) {
-        return new NewsRepository().getNewsList(name, num, start);
+        return new NewsRepository().getNews(name, num, start);
     }
 }

@@ -27,7 +27,6 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     ActivityMainBinding mBinding;//自动生成的，为Activity+。。。或Fragment+。。。
-    private VPAdapter mAdapter;//VP的Adapter
     private static final String TAG = "TAGG";
     private VPAdapter mMAdapter;
     private NewsRepository mNewsRepository;//新闻数据仓库
@@ -72,7 +71,7 @@ public class MainActivity extends BaseActivity {
             fragmentList.add(fragment);
         }
         //必须先给vp绑定adapter
-        if (mAdapter == null) {
+        if (mMAdapter == null) {
             mMAdapter = new VPAdapter(this);
             mBinding.vp.setAdapter(mMAdapter);
             //ViewPager

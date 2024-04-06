@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用Navigation 1.新建navigation包和nav_graph.xml文件-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/biying_pic_fragment">
+    <!--设置启动的默认的fragment-->
+
+    <fragment
+        android:id="@+id/biying_pic_fragment"
+        android:name="com.example.androidmvvmtest.ui.fragment.BiYingPicFragment"
+        android:label="biying_pic_fragment"
+        tools:layout="@layout/fragment_biying_pic"/>
+
+    <fragment
+        android:id="@+id/news_fragment"
+        android:name="com.example.androidmvvmtest.ui.fragment.NewsFragment"
+        android:label="news_fragment"
+        tools:layout="@layout/fragment_news"/>
+
+    <fragment
+        android:id="@+id/video_fragment"
+        android:name="com.example.androidmvvmtest.ui.fragment.VideoFragment"
+        android:label="video_fragment"
+        tools:layout="@layout/fragment_video"/>
+
+</navigation>

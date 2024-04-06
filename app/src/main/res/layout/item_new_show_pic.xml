@@ -14,43 +14,65 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/img_pic"
-            networkUrl="@{newsBean.pic}"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="5dp"
-            android:scaleType="fitXY"
-            app:shapeAppearance="@style/RoundedStyle" />
-
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/img_pic"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="18dp"
-            android:layout_toEndOf="@id/img_pic"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@id/img_pic"
+            android:ellipsize="end"
+            android:maxLines="3"
             android:text="@{newsBean.title}"
-            android:textSize="20sp" />
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:minHeight="60dp"/>
+
+        <com.example.androidmvvmtest.view.CustomImageView
+            android:id="@+id/img_pic"
+            networkUrl="@{newsBean.pic}"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitXY"
+            app:shapeAppearance="@style/RoundedNewStyle" />
+
+        <TextView
+            android:id="@+id/tv_src"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_alignStart="@id/tv_title"
+            android:layout_marginTop="4dp"
+            android:text="@{newsBean.src}"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="15"
+            android:ellipsize="end"/>
 
         <TextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title"
-            android:layout_alignStart="@id/tv_title"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/tv_src"
             android:text="@{newsBean.time}"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:maxLength="11"
+            android:ellipsize="end"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/tv_time"
+            android:layout_height="0.8dp"
             android:layout_alignParentBottom="true"
+            android:layout_below="@id/tv_time"
             android:layout_marginTop="10dp"
             android:background="@color/lavender" />
 

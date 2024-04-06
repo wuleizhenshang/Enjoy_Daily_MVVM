@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--NavHost 容器-->
+        <fragment
+            android:id="@+id/nav_host_fragment_container"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bnav"
+            app:navGraph="@navigation/nav_graph" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnav"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            app:menu="@menu/navigation_menu"
+            app:itemIconTint="@drawable/selector_bnva"
+            app:itemTextColor="@drawable/selector_bnva"
+            app:itemTextAppearanceActive="@style/bottom_tab_title_active"
+            app:itemTextAppearanceInactive="@style/bottom_tab_title_inactive" />
+        <!--定义两个主题分别设置字体大小，这里最后两行设置主题进来就可以控制字体大小，这里设置大小为一样替换掉原来的-->
+        <!--倒数3、4行是设置图标和字体颜色的，不同色系的就需要设置不同的drawable选择器，然后在menu中设置drawable即可-->
+
+    </RelativeLayout>
+
+</layout>

@@ -26,6 +26,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class NetworkApi {
 
+    public static final int BI_YING = 0;
+    public static final int HOT_PIC = 1;
+    public static final int NEWS = 2;
+    public static final int VIDEO = 3;
+
     /**
      * 获取APP运行状态及版本信息，用于日志打印
      */
@@ -35,9 +40,7 @@ public class NetworkApi {
      * 按照需要去更改
      */
     private static String BASE_URL = "http://api.tanshuapi.com";
-
     private static OkHttpClient okHttpClient;
-
     private static final HashMap<String, Retrofit> retrofitHashMap = new HashMap<>();
 
     /**
@@ -50,30 +53,34 @@ public class NetworkApi {
     /**
      * 创建serviceClass的实例
      */
-    public static <T> T createService(Class<T> serviceClass) {
-        return getRetrofit(serviceClass).create(serviceClass);
-    }
-
-    public static <T> T createService(Class<T> serviceClass,int type) {
+    public static <T> T createService(Class<T> serviceClass, int type) {
         setUrlType(type);
         return getRetrofit(serviceClass).create(serviceClass);
     }
 
     /**
      * 设置访问Url类型
-     * @param type 0 必应 1 壁纸列表
+     *
+     * @param type 请求的url对应的种类
      */
-    private static void setUrlType(int type){
+    private static void setUrlType(int type) {
         switch (type) {
-            case 0:
+            case BI_YING:
                 //必应
                 BASE_URL = "https://cn.bing.com";
                 break;
-            case 1:
+            case HOT_PIC:
                 //热门壁纸
                 BASE_URL = "http://service.picasso.adesk.com";
                 break;
-            default:break;
+            case NEWS:
+                BASE_URL = "http://api.tanshuapi.com";
+                break;
+            case VIDEO:
+                BASE_URL = "http://apis.juhe.cn";
+                break;
+            default:
+                break;
         }
     }
 

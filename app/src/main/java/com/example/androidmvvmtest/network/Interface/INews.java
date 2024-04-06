@@ -26,7 +26,7 @@ public interface INews {
     @GET("/api/toutiao/v1/index")
     Observable<Result<NewsResponseBean>> getNewsList(@Query("key") String key, @Query("type") String type, @Query("num") int num, @Query("start") int start);
 
-
-    @GET("shadiao")
-    Observable<TTBean> getShaDiao();
+    //使用默认type
+    @GET("/api/toutiao/v1/index")
+    Observable<Result<NewsResponseBean>> getNewsList(@Query("key") String key, @Query("num") int num, @Query("start") int start);
 }

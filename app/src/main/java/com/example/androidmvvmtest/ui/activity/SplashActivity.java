@@ -31,7 +31,7 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void animationEnd() {
                 binding.tvMvvm.setVisibility(View.VISIBLE);
-                jumpActivity(MVUtils.getBoolean(Constant.IS_LOGIN) ? MainActivity.class : LoginActivity.class);
+                jumpActivity(MVUtils.getBoolean(Constant.IS_LOGIN) ? HomeActivity.class : LoginActivity.class);
             }
         });
     }

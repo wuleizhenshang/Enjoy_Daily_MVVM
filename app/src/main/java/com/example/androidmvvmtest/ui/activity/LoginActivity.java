@@ -43,6 +43,9 @@ public class LoginActivity extends BaseActivity {
         //现在我们的MainActivity和MainViewModel就绑定起来了。ViewModel是数据持久化的，因为对于一些变量就可以直接放在ViewModel当中，而不再放在Activity中，可以根据一个实际的需求来进行。
         mLoginViewModel = new LoginViewModel();
 
+        //设置状态栏
+        setStatusBar(true);
+
         //让model有数据
         mUser = new User("wuleizhenshang", "wuleizhenshang");
         mLoginViewModel.getUser().setValue(mUser);
@@ -69,7 +72,7 @@ public class LoginActivity extends BaseActivity {
                 }
                 showSortMsg("登录成功！");
                 //记录登录
-                MVUtils.getBoolean(Constant.IS_LOGIN,true);
+                MVUtils.put(Constant.IS_LOGIN,true);
                 jumpActivity(BingPicActivity.class);
             }
         });

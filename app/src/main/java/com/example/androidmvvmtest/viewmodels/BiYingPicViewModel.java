@@ -13,7 +13,7 @@ import com.example.androidmvvmtest.repository.BiYingRepository;
  * @Date: 2024/03/15
  * @Discribe:
  */
-public class BingPicViewModel extends ViewModel {
+public class BiYingPicViewModel extends ViewModel {
     /**
      * 必应每日一图
      */

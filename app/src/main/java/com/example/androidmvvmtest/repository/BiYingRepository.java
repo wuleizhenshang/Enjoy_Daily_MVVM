@@ -42,6 +42,10 @@ public class BiYingRepository {
      */
     final MutableLiveData<BiYingResponse> biyingImage = new MutableLiveData<>();
 
+    /**
+     * 获取每日一图数据
+     * @return 返回数据
+     */
     @SuppressLint("CheckResult")
     public MutableLiveData<BiYingResponse> getBiYingData() {
         //今日此接口是否已请求
@@ -124,7 +128,6 @@ public class BiYingRepository {
             }
         });
     }
-
 
     /**
      * 热门壁纸数据

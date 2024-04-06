@@ -26,6 +26,20 @@ public class NewsResponseBean {
         private String weburl;//原文PC网址
         private String content;//新闻内容
 
+        public NewsBean() {
+        }
+
+        public NewsBean(String title, String time, String src, String category, String pic, String url, String weburl, String content) {
+            this.title = title;
+            this.time = time;
+            this.src = src;
+            this.category = category;
+            this.pic = pic;
+            this.url = url;
+            this.weburl = weburl;
+            this.content = content;
+        }
+
         public String getTitle() {
             return title;
         }
