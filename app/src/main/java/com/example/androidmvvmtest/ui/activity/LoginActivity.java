@@ -73,7 +73,7 @@ public class LoginActivity extends BaseActivity {
                 showSortMsg("登录成功！");
                 //记录登录
                 MVUtils.put(Constant.IS_LOGIN,true);
-                jumpActivity(BingPicActivity.class);
+                jumpActivity(HomeActivity.class);
             }
         });
 

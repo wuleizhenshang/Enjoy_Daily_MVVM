@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_alignParentBottom="true"
-            android:background="@color/white"
+            android:background="@color/bg_bnav"
             app:menu="@menu/navigation_menu"
             app:itemIconTint="@drawable/selector_bnva"
             app:itemTextColor="@drawable/selector_bnva"

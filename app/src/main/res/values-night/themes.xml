@@ -7,9 +7,10 @@
 
     <!--必应页面样式-->
     <style name="ImgTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/lightslategray</item>
-        <item name="colorPrimaryDark">@color/lightslategray</item>
+        <!--下面表示状态栏不使用暗色，默认白色-->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/dimgray</item>
+        <item name="colorPrimaryDark">@color/dimgray</item>
         <item name="colorAccent">@color/white</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
@@ -44,7 +45,10 @@
 
     <!--启动页的主题样式-->
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:statusBarColor" tools:targetApi="lollipop">#00FFFFFF</item><!--设置状态栏的颜色-->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
     <!--选中的样式-->

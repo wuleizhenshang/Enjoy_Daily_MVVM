@@ -1,5 +1,6 @@
 package com.example.androidmvvmtest.ui.activity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +47,7 @@ public class HomeActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id==R.id.biying_pic_fragment){
+                if (id == R.id.biying_pic_fragment) {
                     navController.navigate(R.id.biying_pic_fragment);
                 } else if (id == R.id.news_fragment) {
                     navController.navigate(R.id.news_fragment);

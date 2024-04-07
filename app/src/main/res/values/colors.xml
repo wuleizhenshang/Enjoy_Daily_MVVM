@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--底部bnav选项部分-->
+    <color name="bg_bnav">#FFFFFF</color>
+    <color name="bg_bnav_icon_text">#C0C0C0</color>
+    <color name="bg_bnav_icon_text_selected">#778899</color>
+
+    <!--图片页面-->
+    <color name="pic_status_bar_top">#778899</color>
+    <color name="pic_bar_title_color">#000020</color>
+    <color name="pic_brc_bg">#FFFFFF</color>
+
+    <!--新闻和视频展示页面-->
+    <color name="news_brc_bg">#FFFFFF</color>
+    <color name="news_brc_title_color">#000000</color>
+    <color name="news_brc_src_time_color">#A9A9A9</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="ivory">#FFFFF0</color><!--象牙色 -->
@@ -104,14 +119,18 @@
     <color name="chartreuse">#7FFF00</color><!--黄绿色 -->
     <color name="lawngreen">#7CFC00</color><!--草绿色 -->
     <color name="mediumslateblue">#7B68EE</color><!--中暗蓝色 -->
+
     <color name="lightslategray">#778899</color><!--亮蓝灰 -->
     <color name="lightslategrey">#778899</color><!--亮蓝灰 -->
+
     <color name="slategray">#708090</color><!--灰石色 -->
     <color name="slategrey">#708090</color><!--灰石色 -->
     <color name="olivedrab">#6B8E23</color><!--深绿褐色 -->
     <color name="slateblue">#6A5ACD</color><!--石蓝色 -->
+
     <color name="dimgray">#696969</color><!--暗灰色 -->
     <color name="dimgrey">#696969</color><!--暗灰色 -->
+
     <color name="mediumaquamarine">#66CDAA</color><!--中绿色 -->
     <color name="cornflowerblue">#6495ED</color><!--菊兰色 -->
     <color name="cadetblue">#5F9EA0</color><!--军兰色 -->

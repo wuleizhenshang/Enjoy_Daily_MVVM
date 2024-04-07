@@ -25,13 +25,13 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivitySplashBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_splash);
-        setStatusBar(true);//设置状态栏为深色
+//        setStatusBar(true);//设置状态栏为深色
         //根据是否登录进行跳转，这里就是模拟一下
         EasyAnimation.moveViewWidth(binding.tvTranslate, new EasyAnimation.TranslateCallback() {
             @Override
             public void animationEnd() {
                 binding.tvMvvm.setVisibility(View.VISIBLE);
-                jumpActivity(MVUtils.getBoolean(Constant.IS_LOGIN) ? HomeActivity.class : LoginActivity.class);
+                jumpActivityFinish(MVUtils.getBoolean(Constant.IS_LOGIN) ? HomeActivity.class : LoginActivity.class);
             }
         });
     }

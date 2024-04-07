@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--底部bnav选项部分-->
+    <color name="bg_bnav">#000000</color>
+    <color name="bg_bnav_icon_text">#FFFFFF</color>
+    <color name="bg_bnav_icon_text_selected">#778899</color>
+
+    <!--图片页面-->
+    <color name="pic_status_bar_top">#696969</color>
+    <color name="pic_bar_title_color">#FFFFFF</color>
+    <color name="pic_brc_bg">#000000</color>
+
+    <!--新闻和视频展示页面-->
+    <color name="news_brc_bg">#000000</color>
+    <color name="news_brc_title_color">#FFFFFF</color>
+    <color name="news_brc_src_time_color">#F2EFEF</color>
+
+</resources>

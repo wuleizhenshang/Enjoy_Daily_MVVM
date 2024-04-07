@@ -32,8 +32,7 @@
             android:theme="@style/ImageTheme"/>
         <activity
             android:name=".ui.activity.BingPicActivity"
-            android:exported="false"
-            android:theme="@style/ImgTheme"/>
+            android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true" />

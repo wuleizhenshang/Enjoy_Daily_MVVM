@@ -3,6 +3,8 @@ package com.example.androidmvvmtest.base;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.example.androidmvvmtest.db.room.database.AppDatabase;
 import com.example.androidmvvmtest.utils.MVUtils;
 import com.tencent.mmkv.MMKV;
@@ -35,6 +37,8 @@ public class BaseApplication extends Application {
 
         //创建本地数据库
         db = AppDatabase.getInstance(sContext);
+
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
     }
 
     public static Context getContext() {

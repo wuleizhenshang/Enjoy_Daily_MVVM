@@ -19,7 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:background="@color/pic_status_bar_top">
+            <!--AppBarLayout是一个支持响应滚动事件的布局，通常与CoordinatorLayout一起使用，以实现协调的滚动和布局行为。-->
+
             <!--折叠工具栏布局-->
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/tool_bar_layout"
@@ -27,9 +29,14 @@
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 app:collapsedTitleGravity="center_horizontal"
-                app:contentScrim="@color/lightslategray"
+                app:contentScrim="@color/pic_status_bar_top"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:title="@string/bingying_title">
+                app:title="@string/bingying_title"
+                app:collapsedTitleTextColor="@color/pic_bar_title_color"
+                app:expandedTitleTextColor="@color/pic_bar_title_color">
+                <!--CollapsingToolbarLayout是一个特殊的布局，它允许工具栏（Toolbar）在滚动时折叠和展开。-->
+                <!--app:collapsedTitleGravity="center_horizontal"定义了折叠时标题的对其方式-->
+                <!--app:contentScrim="@color/lightslategray"定义了折叠时背景的颜色渐变-->
 
                 <!--轮播-->
                 <com.example.androidmvvmtest.view.CustomImageView
@@ -47,9 +54,13 @@
                     app:contentInsetEnd="0dp"
                     app:contentInsetStart="0dp"
                     app:layout_collapseMode="pin"
-                    app:layout_scrollFlags="scroll|snap" />
+                    app:layout_scrollFlags="scroll|snap"
+                    android:fitsSystemWindows="true" />
+                <!--app:layout_collapseMode="pin"定义了在折叠时工具栏的行为。这里，它会被固定在折叠后的顶部。-->
+                <!--scroll表示工具栏会随着内容滚动，snap表示工具栏在滚动时会快速定位到展开或折叠的状态-->
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
+
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -66,7 +77,8 @@
                 android:id="@+id/rec"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:background="@color/pic_brc_bg"/>
 
         </androidx.core.widget.NestedScrollView>
 

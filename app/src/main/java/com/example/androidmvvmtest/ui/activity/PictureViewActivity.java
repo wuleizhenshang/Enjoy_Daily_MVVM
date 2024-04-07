@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import com.example.androidmvvmtest.R;
 import com.example.androidmvvmtest.ui.adapter.PicViewVPAdapter;
