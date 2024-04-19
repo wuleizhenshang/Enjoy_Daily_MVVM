@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="daily_english"
+            type="com.example.androidmvvmtest.db.room.entity.DailyEnglish" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/news_brc_bg"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/news_brc_bg"
+            android:fitsSystemWindows="true">
+
+
+            <TextView
+                android:id="@+id/tv_daily_english_content_english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_daily_content_tv_content"
+                android:padding="10dp"
+                android:text='@{String.format(@string/daily_english_original_content, daily_english.englishContent)}'
+                android:textColor="@color/daily_english_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_daily_english_content_chinese"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_daily_english_content_english"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_daily_content_tv_content"
+                android:text='@{String.format(@string/daily_english_translate_content, daily_english.chineseContent)}'
+                android:textColor="@color/daily_english_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_daily_english_content_source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_daily_english_content_chinese"
+                android:text='@{String.format(@string/daily_english_source, daily_english.source)}'
+                android:textColor="@color/daily_english_content"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_alignStart="@id/tv_daily_english_content_english"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_daily_english_content_source">
+
+                <com.example.androidmvvmtest.view.CustomImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    app:shapeAppearance="@style/RoundedNewStyle"
+                    android:src="@drawable/bg_daily_english"/>
+
+                <TextView
+                    android:id="@+id/tv_daily_english_content_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text='@{daily_english.date}'
+                    android:textColor="@color/daily_top_title"
+                    android:layout_centerInParent="true"
+                    android:textSize="24sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

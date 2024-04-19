@@ -37,7 +37,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
-    implementation project(path: ':network')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1'//报错增加
@@ -60,11 +59,9 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.12'
     implementation 'androidx.preference:preference:1.0.0'
 
-
     //图片加载框架
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-
 
     //数据库相关框架
     //腾讯MMKV
@@ -83,6 +80,6 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.3.2'
     implementation 'androidx.navigation:navigation-ui:2.3.2'
 
-
-
+    //腾讯X5内核WebView
+    implementation 'com.tencent.tbs:tbssdk:44085'
 }

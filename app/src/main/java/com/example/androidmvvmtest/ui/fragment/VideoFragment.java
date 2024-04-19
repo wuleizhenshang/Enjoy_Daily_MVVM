@@ -45,11 +45,13 @@ public class VideoFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mVideoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
 
+        showLoading(false);
         mVideoViewModel.getVideoList().observe(context, new Observer<List<VideoResponseBean.ResultDTO>>() {
             @Override
             public void onChanged(List<VideoResponseBean.ResultDTO> resultDTOS) {
                 mVideoBinding.rec.setAdapter(new VideoAdapter(resultDTOS));
                 mVideoBinding.rec.setLayoutManager(new LinearLayoutManager(context));
+                dismissLoading();
             }
         });
     }

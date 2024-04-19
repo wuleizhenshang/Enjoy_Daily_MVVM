@@ -8,11 +8,39 @@
     <!--图片页面-->
     <color name="pic_status_bar_top">#696969</color>
     <color name="pic_bar_title_color">#FFFFFF</color>
-    <color name="pic_brc_bg">#000000</color>
+    <color name="pic_brc_bg">#80000000</color>
 
     <!--新闻和视频展示页面-->
-    <color name="news_brc_bg">#000000</color>
+    <color name="news_brc_bg">#696969</color>
     <color name="news_brc_title_color">#FFFFFF</color>
-    <color name="news_brc_src_time_color">#F2EFEF</color>
+    <color name="news_brc_src_time_color">#FEFEFE</color>
+    <color name="bg_news_tool_bar">#696969</color>
+
+    <!--资讯页面-->
+    <color name="info_tab_text">#FFFFFF</color>
+    <color name="info_tab_indicator">#778899</color>
+
+    <!--dialog-->
+    <color name="loading_dialog_text">#515151</color>
+    <color name="edit_dialog_text">#424242</color>
+
+    <!--每日一文和每日英语页面-->
+    <color name="daily_top_title">#FFFFFF</color>
+    <color name="daily_english_content">#AAFFFFFF</color>
+    <color name="daily_english_other">#88FFFFFF</color>
+    <color name="bg_daily_content_tv_content">#323232</color>
+
+    <!--登录界面-->
+    <color name="bg_login_btn">#696969</color>
+    <color name="login_btn_text">#FFFFFF</color>
+    <color name="status_bar_color">#222222</color>
+    <color name="bg_edt_stroke">#C0C0C0</color>
+    <color name="bg_edt_solid">#FFFFFF</color>
+    <color name="bg_login_btn_hint">#AA696969</color>
+
+    <!--nav_header-->
+    <color name="bg_nav_header_top">#424242</color>
+    <color name="nav_header_text">#000000</color>
+    <color name="bg_drawer_nav">#222222</color>
 
 </resources>

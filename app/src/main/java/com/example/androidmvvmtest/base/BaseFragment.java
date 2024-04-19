@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidmvvmtest.utils.ToastUtil;
+import com.example.androidmvvmtest.view.dialog.LoadingDialog;
 
 /**
  * @Author: wuleizhenshang
@@ -23,6 +24,7 @@ import com.example.androidmvvmtest.utils.ToastUtil;
 public class BaseFragment extends Fragment {
 
     protected AppCompatActivity context;
+    private LoadingDialog loadingDialog;
 
     @Nullable
     @Override
@@ -37,12 +39,13 @@ public class BaseFragment extends Fragment {
 
     /**
      * 绑定到Activity
+     *
      * @param context 上下文
      */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof AppCompatActivity){
+        if (context instanceof AppCompatActivity) {
             this.context = (AppCompatActivity) context;
         }
     }
@@ -58,6 +61,7 @@ public class BaseFragment extends Fragment {
 
     /**
      * 短时间展示消息
+     *
      * @param msg 消息
      */
     protected void showSortMsg(CharSequence msg) {
@@ -66,6 +70,7 @@ public class BaseFragment extends Fragment {
 
     /**
      * 长时间展示消息
+     *
      * @param msg 消息
      */
     protected void showLongMsg(CharSequence msg) {
@@ -74,19 +79,48 @@ public class BaseFragment extends Fragment {
 
     /**
      * 自定义时间展示消息
-     * @param msg 消息
+     *
+     * @param msg  消息
      * @param time 时间
      */
-    protected void showCustomMsg(CharSequence msg,long time){
-        ToastUtil.customToast(msg,time);
+    protected void showCustomMsg(CharSequence msg, long time) {
+        ToastUtil.customToast(msg, time);
     }
 
     /**
      * 跳转页面
+     *
      * @param clazz 目标页面
      */
     protected void jumpActivity(final Class<?> clazz) {
         startActivity(new Intent(context, clazz));
+    }
+
+    /**
+     * 显示加载弹窗
+     */
+    protected void showLoading() {
+        loadingDialog = new LoadingDialog(context);
+        loadingDialog.show();
+    }
+
+    /**
+     * 显示加载弹窗
+     *
+     * @param isClose true点击其他区域弹窗关闭，false不关闭
+     */
+    protected void showLoading(boolean isClose) {
+        loadingDialog = new LoadingDialog(context, isClose);
+        loadingDialog.show();
+    }
+
+    /**
+     * 隐藏加载弹窗
+     */
+    protected void dismissLoading() {
+        if (loadingDialog != null) {
+            loadingDialog.dismiss();
+        }
     }
 
 }

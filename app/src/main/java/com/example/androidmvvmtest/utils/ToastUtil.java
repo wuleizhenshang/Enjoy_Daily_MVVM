@@ -20,6 +20,9 @@ public class ToastUtil {
      * @param message 提示的消息
      */
     public static void sortToast(CharSequence message) {
+        if (message==null){
+            return;
+        }
         Toast.makeText(BaseApplication.sContext, message, Toast.LENGTH_SHORT).show();
     }
 
@@ -28,6 +31,9 @@ public class ToastUtil {
      * @param message 提示的消息
      */
     public static void longToast(CharSequence message) {
+        if (message==null){
+            return;
+        }
         Toast.makeText(BaseApplication.sContext, message, Toast.LENGTH_LONG).show();
     }
 
@@ -37,6 +43,9 @@ public class ToastUtil {
      * @param time 展示的时间
      */
     public static void customToast(CharSequence message,long time){
+        if (message==null){
+            return;
+        }
         //构造Toast
         Toast toast = Toast.makeText(BaseApplication.sContext, message, Toast.LENGTH_LONG);
         //新建一个timer展示Toast

@@ -9,9 +9,25 @@
         android:fitsSystemWindows="true"
         android:background="@color/news_brc_bg">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
+
+<!--            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/bg_news_tool_bar"
+                app:title="@string/video_title"
+                app:titleCentered="true"
+                app:titleTextColor="@color/news_brc_title_color"
+                android:fitsSystemWindows="true"/>-->
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:background="@color/news_brc_src_time_color" />
 
             <!--先简化功能，需要后面再加-->
             <!--        <com.google.android.material.tabs.TabLayout
@@ -31,7 +47,7 @@
                 android:layout_height="match_parent"
                 android:background="@color/news_brc_bg" />
 
-        </RelativeLayout>
+        </LinearLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

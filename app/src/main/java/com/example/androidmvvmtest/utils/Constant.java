@@ -22,6 +22,9 @@ public class Constant {
     //是否登录过
     public static final String IS_LOGIN = "isLogin";
 
+    //是否注册过
+    public static final String IS_REGISTER = "isRegister";
+
     //今日是否请求了新闻数据
     public static final String IS_TODAY_REQUEST_NEWS = "isTodayRequestNews";
 
@@ -39,5 +42,17 @@ public class Constant {
 
     //今日请求聚合视频数据的时间戳
     public static final String REQUEST_TIMESTAMP_VIDEO = "videoRequestTimestamp";
+
+    //今日是否请求了每日英语数据
+    public static final String IS_TODAY_REQUEST_DAILY_ENGLISH = "isTodayRequestDailyEnglish";
+
+    //今日请求后下次再需请求每日英语数据的时间戳
+    public static final String REQUEST_TIMESTAMP_DAILY_ENGLISH = "dailyEnglishRequestTimestamp";
+
+    //今日是否请求了每日英语数据
+    public static final String IS_TODAY_REQUEST_DAILY_CONTENT = "isTodayRequestDailyContent";
+
+    //今日请求后下次再需请求每日英语数据的时间戳
+    public static final String REQUEST_TIMESTAMP_DAILY_CONTENT = "dailyContentRequestTimestamp";
 }
 

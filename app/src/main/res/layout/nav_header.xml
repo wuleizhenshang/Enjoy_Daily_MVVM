@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+    </data>
+
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!--头部菜单-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/bg_nav_header_top">
+            <!--头像-->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:padding="1dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/icon_authore"
+                app:shapeAppearanceOverlay="@style/CircleStyle"
+                app:strokeColor="@color/white"
+                app:strokeWidth="2dp" />
+
+            <!--名称-->
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/img_avatar"
+                android:layout_marginTop="16dp"
+                android:layout_toEndOf="@+id/img_avatar"
+                android:text="@string/developer"
+                android:textColor="@color/nav_header_text"
+                android:textSize="16sp" />
+            <!--标签-->
+            <TextView
+                android:id="@+id/tv_tip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@+id/img_avatar"
+                android:text="@string/nav_tip"
+                android:textColor="@color/nav_header_text"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</layout>

@@ -8,11 +8,17 @@
         <variable
             name="newsBean"
             type="com.example.androidmvvmtest.network.bean.response.NewsResponseBean.NewsBean" />
+
+        <variable
+            name="onClick"
+            type="com.example.androidmvvmtest.ui.adapter.NewsAdapter.ClickBinding" />
     </data>
 
     <RelativeLayout
+        android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{()->onClick.itemClick(newsBean,view)}">
 
         <TextView
             android:id="@+id/tv_title"

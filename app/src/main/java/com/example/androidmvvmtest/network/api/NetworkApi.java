@@ -30,7 +30,8 @@ public class NetworkApi {
     public static final int HOT_PIC = 1;
     public static final int NEWS = 2;
     public static final int VIDEO = 3;
-
+    public static final int DAILY = 4;
+    public static final int WAN_ANDROID = 5;
     /**
      * 获取APP运行状态及版本信息，用于日志打印
      */
@@ -39,7 +40,7 @@ public class NetworkApi {
      * API访问地址
      * 按照需要去更改
      */
-    private static String BASE_URL = "http://api.tanshuapi.com";
+    private static String BASE_URL = "";
     private static OkHttpClient okHttpClient;
     private static final HashMap<String, Retrofit> retrofitHashMap = new HashMap<>();
 
@@ -79,6 +80,12 @@ public class NetworkApi {
             case VIDEO:
                 BASE_URL = "http://apis.juhe.cn";
                 break;
+            case DAILY:
+                BASE_URL = "https://apis.tianapi.com";
+                break;
+            case WAN_ANDROID:
+                BASE_URL = "https://www.wanandroid.com";
+                break;
             default:
                 break;
         }
@@ -86,7 +93,7 @@ public class NetworkApi {
 
     /**
      * 配置OkHttp
-     *
+     * 暂时关闭log
      * @return OkHttpClient
      */
     private static OkHttpClient getOkHttpClient() {

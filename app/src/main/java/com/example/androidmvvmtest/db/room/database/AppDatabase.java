@@ -9,11 +9,15 @@ import androidx.room.RoomDatabase;
 import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.androidmvvmtest.db.room.dao.DailyContentDao;
+import com.example.androidmvvmtest.db.room.dao.DailyEnglishDao;
 import com.example.androidmvvmtest.db.room.dao.ImageDao;
 import com.example.androidmvvmtest.db.room.dao.NewsChannelDao;
 import com.example.androidmvvmtest.db.room.dao.NewsDao;
 import com.example.androidmvvmtest.db.room.dao.VideoDao;
 import com.example.androidmvvmtest.db.room.dao.WallPaperDao;
+import com.example.androidmvvmtest.db.room.entity.DailyContent;
+import com.example.androidmvvmtest.db.room.entity.DailyEnglish;
 import com.example.androidmvvmtest.db.room.entity.Image;
 import com.example.androidmvvmtest.db.room.entity.News;
 import com.example.androidmvvmtest.db.room.entity.NewsChannel;
@@ -26,8 +30,9 @@ import com.example.androidmvvmtest.db.room.entity.WallPaper;
  * @Date: 2024/03/16
  * @Discribe:
  */
-@Database(entities = {Image.class, WallPaper.class, NewsChannel.class,News.class, Video.class}
-        , version = 4, exportSchema = false)
+@Database(entities = {Image.class, WallPaper.class, NewsChannel.class,News.class, Video.class,
+DailyEnglish.class, DailyContent.class}
+        , version = 6, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "mvvm_demo";
@@ -45,6 +50,8 @@ public abstract class AppDatabase extends RoomDatabase {
                             .addMigrations(MIGRATION_1_2)//数据库版本迁移使用
                             .addMigrations(MIGRATION_2_3)
                             .addMigrations(MIGRATION_3_4)
+                            .addMigrations(MIGRATION_4_5)
+                            .addMigrations(MIGRATION_5_6)
                             .build();
                 }
             }
@@ -111,6 +118,39 @@ public abstract class AppDatabase extends RoomDatabase {
         }
     };
 
+    /**
+     * 版本迁移4->5
+     */
+    static final Migration MIGRATION_4_5 = new Migration(4,5) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE `DailyEnglish`"+
+                    "(id INTEGER NOT NULL,"+
+                    "englishContent TEXT,"+
+                    "chineseContent TEXT,"+
+                    "date TEXT,"+
+                    "source TEXT,"+
+                    "PRIMARY KEY(`id`))");
+        }
+    };
+
+    /**
+     * 版本迁移5->6
+     */
+    static final Migration MIGRATION_5_6 = new Migration(5,6) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE `DailyContent`"+
+                    "(id INTEGER NOT NULL,"+
+                    "content TEXT,"+
+                    "src TEXT,"+
+                    "imgUrl TEXT,"+
+                    "imgAuthor TEXT,"+
+                    "date TEXT,"+
+                    "PRIMARY KEY(`id`))");
+        }
+    };
+
     public abstract ImageDao imageDao();
 
     public abstract WallPaperDao wallPaperDao();
@@ -120,5 +160,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract NewsDao newsDao();
 
     public abstract VideoDao videoDao();
+    public abstract DailyEnglishDao dailyEnglishDao();
+    public abstract DailyContentDao dailyContentDao();
 }
 

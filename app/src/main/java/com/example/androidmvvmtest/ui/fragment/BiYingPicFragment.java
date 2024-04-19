@@ -21,6 +21,7 @@ import com.example.androidmvvmtest.databinding.FragmentBiyingPicBinding;
 import com.example.androidmvvmtest.network.bean.response.BiYingResponse;
 import com.example.androidmvvmtest.network.bean.response.WallPaperResponse;
 import com.example.androidmvvmtest.ui.adapter.WallPaperAdapter;
+import com.example.androidmvvmtest.utils.StatusBarUtil;
 import com.example.androidmvvmtest.viewmodels.BiYingPicViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 
@@ -52,10 +53,17 @@ public class BiYingPicFragment extends BaseFragment {
         initHotPics();//获取热门壁纸
     }
 
+/*    private void initStatusBar(){
+        if (getActivity()!=null){
+            StatusBarUtil.setStatusBarColor(getActivity(),R.color.pic_status_bar_top);
+        }
+    }*/
+
     /**
      * 获取每日一图
      */
     private void initBiYingPerPic() {
+        showLoading();
         //获取必应每日一图
         mBiYingPicViewModel.getBiYing();//网络请求获取图片
         //返回数据时更新ViewModel，ViewModel更新则xml更新
@@ -63,6 +71,7 @@ public class BiYingPicFragment extends BaseFragment {
             @Override
             public void onChanged(BiYingResponse biYingResponse) {
                 mBinding.setBingViewmodel(mBiYingPicViewModel);
+//                dismissLoading();
             }
         });
     }
@@ -71,6 +80,7 @@ public class BiYingPicFragment extends BaseFragment {
      * 获取热门图片
      */
     private void initHotPics() {
+        //showLoading();
         GridLayoutManager manager = new GridLayoutManager(context, 2);
         mBinding.rec.setLayoutManager(manager);
         //获取数据
@@ -80,11 +90,11 @@ public class BiYingPicFragment extends BaseFragment {
             public void onChanged(WallPaperResponse wallPaperResponse) {
                 WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(wallPaperResponse.getRes().getVertical());
                 mBinding.rec.setAdapter(wallPaperAdapter);
+                dismissLoading();
                 //mBinding.rec.setAdapter(new WallPaperAdapter(wallPaperResponse.getRes().getVertical()));
             }
         });
     }
-
 
     /**
      * 伸缩偏移量监听

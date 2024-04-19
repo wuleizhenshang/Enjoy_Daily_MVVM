@@ -11,7 +11,6 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="colorPrimary">@color/dimgray</item>
         <item name="colorPrimaryDark">@color/dimgray</item>
-        <item name="colorAccent">@color/white</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
@@ -43,12 +42,30 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
+    <!--WebView页面样式-->
+    <style name="WebViewShowTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--下面表示状态栏使用暗色，也就是黑色-->
+        <item name="android:windowLightStatusBar">false</item>
+        <!--        <item name="colorPrimary">@color/dimgray</item>
+                <item name="colorPrimaryDark">@color/dimgray</item>-->
+        <item name="android:statusBarColor">@color/dimgray</item>
+    </style>
+
     <!--启动页的主题样式-->
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <!--登录页面-->
+    <style name="LoginTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/bg_login_btn</item>
+        <item name="colorPrimaryDark">@color/bg_login_btn</item>
+        <item name="android:statusBarColor">@color/status_bar_color</item>
+        <item name="colorAccent">@color/bg_login_btn</item>
     </style>
 
     <!--选中的样式-->
@@ -59,5 +76,40 @@
     <!--没有选中的样式，导航默认的字体大小就是14sp-->
     <style name="bottom_tab_title_inactive">
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <!--加载dialog-->
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/shape_bg_white_radius_24</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <!--自定义对话框-->
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!--对话框弹出和消失动画-->
+    <style name="dialog_from_bottom_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_from_bottom_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_from_bottom_anim_out</item>
+    </style>
+
+    <style name="dialog_from_top_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_from_top_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_from_top_anim_out</item>
+    </style>
+
+    <style name="dialog_scale_anim">
+        <item name="android:windowEnterAnimation">@anim/dialog_scale_anim_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_scale_anim_out</item>
     </style>
 </resources>

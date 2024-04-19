@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.example.androidmvvmtest.R;
@@ -34,5 +35,20 @@ public class SplashActivity extends BaseActivity {
                 jumpActivityFinish(MVUtils.getBoolean(Constant.IS_LOGIN) ? HomeActivity.class : LoginActivity.class);
             }
         });
+    }
+
+    private long timeMillis;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - timeMillis) > 2000) {
+                showCustomMsg(context.getString(R.string.press_twice_to_exit),1500);
+                timeMillis = System.currentTimeMillis();
+            } else {
+                exitTheProgram();
+            }
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

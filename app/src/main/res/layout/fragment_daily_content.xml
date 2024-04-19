@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="dailyContent"
+            type="com.example.androidmvvmtest.db.room.entity.DailyContent" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{dailyContent.content}"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:padding="10dp"
+                android:textColor="@color/daily_english_content"
+                android:background="@drawable/bg_daily_content_tv_content"/>
+
+            <TextView
+                android:id="@+id/tv_src"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content"
+                android:layout_marginTop="8dp"
+                android:layout_alignStart="@id/tv_content"
+                android:textSize="16sp"
+                android:text='@{dailyContent.src}'
+                android:textColor="@color/daily_english_other"/>
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_toEndOf="@id/tv_src"
+                android:textSize="16sp"
+                android:text="@{dailyContent.date}"
+                android:textColor="@color/daily_english_other"/>
+
+            <com.example.androidmvvmtest.view.CustomImageView
+                android:id="@+id/img_daily_english"
+                networkUrl="@{dailyContent.imgUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/tv_date"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:scaleType="fitXY"
+                android:paddingStart="10dp"
+                android:layout_marginTop="8dp"
+                android:paddingEnd="10dp"
+                app:shapeAppearance="@style/RoundedNewStyle"
+                android:layout_marginBottom="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

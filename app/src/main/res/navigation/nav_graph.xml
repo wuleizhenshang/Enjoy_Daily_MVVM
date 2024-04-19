@@ -14,15 +14,15 @@
         tools:layout="@layout/fragment_biying_pic"/>
 
     <fragment
-        android:id="@+id/news_fragment"
-        android:name="com.example.androidmvvmtest.ui.fragment.NewsFragment"
-        android:label="news_fragment"
-        tools:layout="@layout/fragment_news"/>
+        android:id="@+id/info_fragment"
+        android:name="com.example.androidmvvmtest.ui.fragment.InfoFragment"
+        android:label="info_fragment"
+        tools:layout="@layout/fragment_info"/>
 
     <fragment
-        android:id="@+id/video_fragment"
-        android:name="com.example.androidmvvmtest.ui.fragment.VideoFragment"
-        android:label="video_fragment"
-        tools:layout="@layout/fragment_video"/>
+        android:id="@+id/daily_fragment"
+        android:name="com.example.androidmvvmtest.ui.fragment.DailyFragment"
+        android:label="daily_fragment"
+        tools:layout="@layout/fragment_daily"/>
 
 </navigation>

@@ -4,14 +4,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,14 +18,10 @@ import com.example.androidmvvmtest.R;
 import com.example.androidmvvmtest.base.BaseFragment;
 import com.example.androidmvvmtest.databinding.FragmentNewsBinding;
 import com.example.androidmvvmtest.network.bean.response.NewsResponseBean;
-import com.example.androidmvvmtest.ui.activity.MainActivity;
 import com.example.androidmvvmtest.ui.adapter.NewsAdapter;
 import com.example.androidmvvmtest.ui.adapter.VPAdapter;
 import com.example.androidmvvmtest.viewmodels.NewsViewModel;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -64,15 +57,17 @@ public class NewsFragment extends BaseFragment {
 //            }
 //        });
 
-
+        showLoading(false);
         //简化直接获取新闻列表
         mViewModel.getNewsBean("",40,0).observe(context, new Observer<List<NewsResponseBean.NewsBean>>() {
             @Override
             public void onChanged(List<NewsResponseBean.NewsBean> newsBeans) {
                 newsBinding.rec.setAdapter(new NewsAdapter(newsBeans));
                 newsBinding.rec.setLayoutManager(new LinearLayoutManager(context));
+                dismissLoading();
             }
         });
+
     }
 
 
