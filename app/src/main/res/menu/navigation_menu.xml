@@ -3,13 +3,13 @@
     <item
         android:id="@+id/biying_pic_fragment"
         android:icon="@drawable/icon_biying_pic"
-        android:title="图片" />
+        android:title="@string/navigation_menu_picture" />
     <item
         android:id="@+id/info_fragment"
         android:icon="@drawable/icon_news"
-        android:title="资讯" />
+        android:title="@string/navigation_menu_info" />
     <item
         android:id="@+id/daily_fragment"
         android:icon="@drawable/icon_video"
-        android:title="每日语句" />
+        android:title="@string/navigation_menu_content" />
 </menu>

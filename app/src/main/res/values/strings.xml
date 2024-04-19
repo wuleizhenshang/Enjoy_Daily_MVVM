@@ -25,4 +25,8 @@
     <string name="dialog_tip_title">温馨提示</string>
     <string name="dialog_tip_register_text">多次登陆失败！是否要直接创建用户？</string>
     <string name="press_twice_to_exit">再次按下退出应用程序</string>
+    <string name="app_bottom_title">Model · View · appViewModel</string>
+    <string name="navigation_menu_picture">图片</string>
+    <string name="navigation_menu_info">资讯</string>
+    <string name="navigation_menu_content">每日语句</string>
 </resources>

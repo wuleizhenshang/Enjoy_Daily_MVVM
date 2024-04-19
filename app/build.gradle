@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    //hilt
+//    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -82,4 +84,9 @@ dependencies {
 
     //腾讯X5内核WebView
     implementation 'com.tencent.tbs:tbssdk:44085'
+
+//    //hilt和hilt注解解释器
+//    implementation "com.google.dagger:hilt-android:2.44"
+//    annotationProcessor "com.google.dagger:hilt-compiler:2.44"
+
 }

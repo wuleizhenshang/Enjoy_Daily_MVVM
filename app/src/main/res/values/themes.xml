@@ -64,9 +64,11 @@
     <!--启动页的主题样式-->
     <style name="SplashTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">true</item>
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="colorPrimary">@color/bg_bnav_icon_text_selected</item>
+        <item name="colorPrimaryVariant">@color/bg_bnav_icon_text_selected</item>
+        <item name="statusBarBackground">@color/bg_bnav_icon_text_selected</item>
+        <item name="android:statusBarColor">@color/bg_bnav_icon_text_selected</item>
+        <item name="android:windowBackground">@drawable/splash_bg</item>
     </style>
 
     <!--选中的样式-->
