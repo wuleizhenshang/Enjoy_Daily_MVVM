@@ -2,6 +2,9 @@ package com.example.androidmvvmtest.network.api;
 
 import com.example.androidmvvmtest.network.bean.response.BaseResponse;
 import com.example.androidmvvmtest.network.exception.ExceptionHandle;
+import com.example.androidmvvmtest.network.exception.HttpErrorHandler;
+import com.example.androidmvvmtest.network.interceptor.RequestInterceptor;
+import com.example.androidmvvmtest.network.interceptor.ResponseInterceptor;
 import com.example.androidmvvmtest.network.utils.INetworkRequiredInfo;
 
 import java.util.HashMap;
@@ -13,7 +16,9 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -102,24 +107,24 @@ public class NetworkApi {
             //OkHttp构建器
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
             //设置缓存大小
-            //int cacheSize = 100 * 1024 * 1024;
+            int cacheSize = 100 * 1024 * 1024;
             //设置OkHttp网络缓存
-            //builder.cache(new Cache(iNetworkRequiredInfo.getApplicationContext().getCacheDir(), cacheSize));
+            builder.cache(new Cache(iNetworkRequiredInfo.getApplicationContext().getCacheDir(), cacheSize));
             //设置网络请求超时时长，这里设置为6s
             builder.connectTimeout(6, TimeUnit.SECONDS);
             //添加请求拦截器，如果接口有请求头的话，可以放在这个拦截器里面
-            //builder.addInterceptor(new RequestInterceptor(iNetworkRequiredInfo));
+            builder.addInterceptor(new RequestInterceptor(iNetworkRequiredInfo));
             //添加返回拦截器，可用于查看接口的请求耗时，对于网络优化有帮助
-            //builder.addInterceptor(new ResponseInterceptor());
+            builder.addInterceptor(new ResponseInterceptor());
             //当程序在debug过程中则打印数据日志，方便调试用。
-//            if (iNetworkRequiredInfo != null && iNetworkRequiredInfo.isDebug()) {
-//                //iNetworkRequiredInfo不为空且处于debug状态下则初始化日志拦截器
-//                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-//                //设置要打印日志的内容等级，BODY为主要内容，还有BASIC、HEADERS、NONE。
-//                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-//                //将拦截器添加到OkHttp构建器中
-//                builder.addInterceptor(httpLoggingInterceptor);
-//            }
+            if (iNetworkRequiredInfo != null && iNetworkRequiredInfo.isDebug()) {
+                //iNetworkRequiredInfo不为空且处于debug状态下则初始化日志拦截器
+                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+                //设置要打印日志的内容等级，BODY为主要内容，还有BASIC、HEADERS、NONE。
+                httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                //将拦截器添加到OkHttp构建器中
+                builder.addInterceptor(httpLoggingInterceptor);
+            }
             //OkHttp配置完成
             okHttpClient = builder.build();
         }
@@ -164,20 +169,13 @@ public class NetworkApi {
      * @return Observable
      */
     public static <T> ObservableTransformer<T, T> applySchedulers(final Observer<T> observer) {
-//        return upstream -> {
-//            Observable<T> observable = upstream
-//                    .subscribeOn(Schedulers.io())//线程订阅
-//                    .observeOn(AndroidSchedulers.mainThread())//观察Android主线程
-//                    .map(NetworkApi.getAppErrorHandler())//判断有没有500的错误，有则进入getAppErrorHandler
-//                    .onErrorResumeNext(new HttpErrorHandler<>());//判断有没有400的错误
-//            //订阅观察者
-//            observable.subscribe(observer);
-//            return observable;
-//        };
         return upstream -> {
             Observable<T> observable = upstream
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread());
+                    .subscribeOn(Schedulers.io())//线程订阅
+                    .observeOn(AndroidSchedulers.mainThread())//观察Android主线程
+                    .map(NetworkApi.getAppErrorHandler())//判断有没有500的错误，有则进入getAppErrorHandler
+                    .onErrorResumeNext(new HttpErrorHandler<>());//判断有没有400的错误
+            //订阅观察者
             observable.subscribe(observer);
             return observable;
         };

@@ -6,6 +6,9 @@ import androidx.lifecycle.ViewModel;
 import com.example.androidmvvmtest.network.bean.response.BiYingResponse;
 import com.example.androidmvvmtest.network.bean.response.WallPaperResponse;
 import com.example.androidmvvmtest.repository.BiYingRepository;
+import com.example.androidmvvmtest.repository.BiYingShowPicRepository;
+
+import dagger.hilt.android.scopes.ViewModelScoped;
 
 /**
  * @Author: wuleizhenshang
@@ -19,8 +22,11 @@ public class BiYingPicViewModel extends ViewModel {
      */
     public LiveData<BiYingResponse> mBiYingResponseLiveData;
 
+    private final BiYingRepository mRepository = new BiYingRepository();
+
+
     public void getBiYing() {
-        mBiYingResponseLiveData = new BiYingRepository().getBiYingData();
+        mBiYingResponseLiveData = mRepository.getBiYingData();
     }
 
     /**
@@ -28,6 +34,6 @@ public class BiYingPicViewModel extends ViewModel {
      */
     public LiveData<WallPaperResponse> wallPaper;
 
-    public void getWallPaper() { wallPaper = new BiYingRepository().getWallPaper(); }
+    public void getWallPaper() { wallPaper = mRepository.getWallPaper(); }
 
 }

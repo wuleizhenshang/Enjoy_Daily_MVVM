@@ -17,7 +17,6 @@ import org.json.JSONObject;
  * 自定义日志类
  */
 public final class KLog {
-
     private static boolean IS_SHOW_LOG = true;
 
     private static final String DEFAULT_MESSAGE = "execute";
@@ -32,6 +31,10 @@ public final class KLog {
     private static final int A = 0x6;
     private static final int JSON = 0x7;
 
+    /**
+     * 初始化后全局控制是否打印日志
+     * @param isShowLog 是否打印日志
+     */
     public static void init(boolean isShowLog) {
         IS_SHOW_LOG = isShowLog;
     }

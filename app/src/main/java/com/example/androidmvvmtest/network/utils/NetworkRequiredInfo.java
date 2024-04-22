@@ -1,6 +1,14 @@
 package com.example.androidmvvmtest.network.utils;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.util.Log;
+
+import com.chad.library.adapter4.BuildConfig;
+import com.example.androidmvvmtest.utils.KLog;
 
 /**
  * @Author: wuleizhenshang
@@ -18,29 +26,46 @@ public class NetworkRequiredInfo implements INetworkRequiredInfo {
 
     /**
      * 版本名
+     * 如：1.0
      */
     @Override
     public String getAppVersionName() {
-        //return BuildConfig.VERSION_NAME;
-        return null;
+        try {
+            PackageInfo packageInfo =
+                    getApplicationContext().getPackageManager()
+                            .getPackageInfo(getApplicationContext().getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     /**
      * 版本号
+     * 如：1
      */
     @Override
     public String getAppVersionCode() {
-        //return String.valueOf(BuildConfig.VERSION_CODE);
-        return null;
+        try {
+            PackageInfo packageInfo =
+                    getApplicationContext().getPackageManager()
+                            .getPackageInfo(getApplicationContext().getPackageName(), 0);
+            return packageInfo.versionCode + "";
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return -1 + "";
+        }
     }
 
     /**
      * 是否为debug
+     * 暂时不知道哪个是对的，先用博主默认的
      */
     @Override
     public boolean isDebug() {
-        //return BuildConfig.DEBUG;
-        return false;
+        //return (getApplicationContext().getApplicationInfo().flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+        return BuildConfig.DEBUG;
     }
 
     /**

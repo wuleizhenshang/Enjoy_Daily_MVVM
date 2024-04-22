@@ -1,5 +1,6 @@
 package com.example.androidmvvmtest.base;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
@@ -7,7 +8,11 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.example.androidmvvmtest.db.room.database.AppDatabase;
+import com.example.androidmvvmtest.network.api.NetworkApi;
+import com.example.androidmvvmtest.network.utils.INetworkRequiredInfo;
+import com.example.androidmvvmtest.network.utils.NetworkRequiredInfo;
 import com.example.androidmvvmtest.ui.activity.ActivityManager;
+import com.example.androidmvvmtest.utils.KLog;
 import com.example.androidmvvmtest.utils.MVUtils;
 import com.example.androidmvvmtest.utils.ScreenUtil;
 import com.example.androidmvvmtest.utils.ToastUtil;
@@ -17,14 +22,18 @@ import com.tencent.smtt.sdk.QbSdk;
 
 import java.util.HashMap;
 
+import dagger.hilt.android.HiltAndroidApp;
+
 /**
  * @Author: wuleizhenshang
  * @Email: wuleizhenshang@163.com
  * @Date: 2024/03/15
  * @Discribe:
  */
+@HiltAndroidApp//Hilt添加
 public class BaseApplication extends Application {
 
+    @SuppressLint("StaticFieldLeak")
     public static Context sContext;
 
     //数据库
@@ -36,24 +45,33 @@ public class BaseApplication extends Application {
 
         sContext = getApplicationContext();
 
-        //MMKV初始化
-        MMKV.initialize(sContext);
+        //MMKV初始化和MVUtils工具类初始化
+        String initialize = MMKV.initialize(sContext);
+        KLog.i("TAGG","MMKV INIT " + initialize);//查看缓存文件
         MVUtils.getInstance();
-        //查看缓存文件
-/*        String initialize = MMKV.initialize(this);
-        System.out.println("MMKV INIT " + initialize);*/
-
         //创建本地数据库
         db = AppDatabase.getInstance(sContext);
+        //网络日志初始化
+        NetworkApi.init(new NetworkRequiredInfo(this));
         //腾讯WebView初始化
         initX5WebView();
     }
 
+    /**
+     * 获取application context
+     *
+     * @return ApplicationContext
+     */
     public static Context getContext() {
         return sContext;
     }
 
-    public static AppDatabase getDb(){
+    /**
+     * 获取app的数据库对象
+     *
+     * @return db
+     */
+    public static AppDatabase getDb() {
         return db;
     }
 
@@ -70,7 +88,7 @@ public class BaseApplication extends Application {
             @Override
             public void onViewInitFinished(boolean arg0) {
                 //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-                Log.i("TAGG"," onViewInitFinished is " + arg0);
+                KLog.i("TAGG", " onViewInitFinished is " + arg0);
             }
 
             @Override
@@ -81,6 +99,11 @@ public class BaseApplication extends Application {
         QbSdk.initX5Environment(getApplicationContext(), cb);
     }
 
+    /**
+     * 获取app的ActivityManager
+     *
+     * @return ActivityManager
+     */
     public static ActivityManager getActivityManager() {
         return ActivityManager.getInstance();
     }

@@ -25,6 +25,8 @@ import com.example.androidmvvmtest.utils.StatusBarUtil;
 import com.example.androidmvvmtest.viewmodels.BiYingPicViewModel;
 import com.google.android.material.appbar.AppBarLayout;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
 /**
  * @Author wuleizhenshang
  * @Email wuleizhenshang@163.com
