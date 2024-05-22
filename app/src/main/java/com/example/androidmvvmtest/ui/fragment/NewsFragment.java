@@ -59,7 +59,7 @@ public class NewsFragment extends BaseFragment {
 
         showLoading(false);
         //简化直接获取新闻列表
-        mViewModel.getNewsBean("",40,0).observe(context, new Observer<List<NewsResponseBean.NewsBean>>() {
+        mViewModel.getNewsBean("政治",40,0).observe(context, new Observer<List<NewsResponseBean.NewsBean>>() {
             @Override
             public void onChanged(List<NewsResponseBean.NewsBean> newsBeans) {
                 newsBinding.rec.setAdapter(new NewsAdapter(newsBeans));

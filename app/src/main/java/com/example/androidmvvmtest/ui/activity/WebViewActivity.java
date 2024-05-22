@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * @Author wuleizhenshang
  * @Email wuleizhenshang@163.com
  * @Date 2024/4/14 16:11
- * @Description: TODO
+ * @Description: 加载新闻和视频的WebView的activity
  */
 public class WebViewActivity extends BaseActivity {
     @Override
@@ -42,13 +42,7 @@ public class WebViewActivity extends BaseActivity {
             binding.webView.loadData(getIntent().getStringExtra("url"), "text/html; charset=utf-8", "UTF-8");
         } else if (getIntent().getIntExtra("kind", 1) == 1) {
             binding.webView.loadUrl(getIntent().getStringExtra("url"));
-            binding.webView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.i("TAGG","11");
-                    openBrowser(getIntent().getStringExtra("url"));
-                }
-            });
+            openBrowser(getIntent().getStringExtra("url"));
         }
     }
 

@@ -27,6 +27,7 @@ import com.example.androidmvvmtest.utils.Constant;
 import com.example.androidmvvmtest.utils.KLog;
 import com.example.androidmvvmtest.utils.MVUtils;
 import com.example.androidmvvmtest.utils.SizeUtil;
+import com.example.androidmvvmtest.utils.ToastConstant;
 import com.example.androidmvvmtest.utils.ToastUtil;
 import com.example.androidmvvmtest.view.dialog.AlertDialog;
 import com.example.androidmvvmtest.viewmodels.LoginViewModel;
@@ -36,8 +37,8 @@ import com.google.android.material.textfield.TextInputEditText;
 public class LoginActivity extends BaseActivity {
     ActivityLoginBinding mBinding;
     LoginViewModel mLoginViewModel;
-    private User mUser;
-    private AlertDialog mDialog;
+//    private User mUser;
+//    private AlertDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,157 +49,212 @@ public class LoginActivity extends BaseActivity {
         //现在我们的MainActivity和MainViewModel就绑定起来了。ViewModel是数据持久化的，因为对于一些变量就可以直接放在ViewModel当中，而不再放在Activity中，可以根据一个实际的需求来进行。
         mLoginViewModel = new LoginViewModel();
 
+        mBinding.setViewModel(mLoginViewModel);
+
+        initObserver();
+        initClick();
+
         //设置状态栏
 //        setStatusBar(true);
 
         //让model有数据
-        mUser = new User("", "");
-        mLoginViewModel.getUser().setValue(mUser);
+//        mUser = new User("", "");
+//        mLoginViewModel.getUser().setValue(mUser);
+//
+//        //获取观察对象
+//        MutableLiveData<User> user = mLoginViewModel.getUser();
+//        user.observe(this, new Observer<User>() {
+//            @Override
+//            public void onChanged(User user) {
+//                mBinding.setViewModel(mLoginViewModel);
+//            }
+//        });
 
-        //获取观察对象
-        MutableLiveData<User> user = mLoginViewModel.getUser();
-        user.observe(this, new Observer<User>() {
-            @Override
-            public void onChanged(User user) {
-                mBinding.setViewModel(mLoginViewModel);
-            }
-        });
 
-
-        login();//登录
-        register();//注册相关
+//        login();//登录
+//        register();//注册相关
     }
 
+//    /**
+//     * 登录相关
+//     */
+//    private void login() {
+//        //按钮监听
+//        mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (mLoginViewModel.getUser().getValue().getAccount().isEmpty()) {
+//                    showCustomMsg(getString(R.string.please_input_username),1500);
+//                    return;
+//                }
+//                if (mLoginViewModel.getUser().getValue().getPwd().isEmpty()) {
+//                    showCustomMsg(getString(R.string.please_input_password),1500);
+//                    return;
+//                }
+//                //加载和禁用按钮防止多次点击
+//                showLoading(false);
+//                mBinding.btnLogin.setClickable(false);
+//                //调用接口登录
+//                mLoginViewModel.login(new WanAndroidLoginRequestBean(
+//                        mLoginViewModel.getUser().getValue().getAccount(),
+//                        mLoginViewModel.getUser().getValue().getPwd()));
+//            }
+//        });
+//
+//        //登录信息
+//        mLoginViewModel.getIsLoginSuccess().observe(context, new Observer<Boolean>() {
+//            @Override
+//            public void onChanged(Boolean aBoolean) {
+//                if (aBoolean) {
+//                    //登录成功
+//                    MVUtils.put(Constant.IS_LOGIN, true);
+//                    jumpActivityFinish(HomeActivity.class);
+//                }
+//            }
+//        });
+//
+//        //登录信息回调变化
+//        mLoginViewModel.getLoginMsg().observe(context, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                KLog.i("TAGG", mLoginViewModel.getLoginMsg().getValue());
+//                showCustomMsg(mLoginViewModel.getLoginMsg().getValue(), 1500);
+//                //取消加载，恢复按钮点击
+//                dismissLoading();
+//                mBinding.btnLogin.setClickable(true);
+//            }
+//        });
+//    }
+
+//    /**
+//     * 注册相关
+//     */
+//    private void register() {
+//
+//        mLoginViewModel.getLoginCount().observe(context, new Observer<Integer>() {
+//            @Override
+//            public void onChanged(Integer integer) {
+//                KLog.i("TAGG", String.valueOf(integer));
+//                if (integer >= 3) {
+//                    if (Boolean.FALSE.equals(mLoginViewModel.getIsRegister().getValue())) {
+//                        //点击了三次还是没登录成功
+//                        if (Boolean.FALSE.equals(mLoginViewModel.getIsLoginSuccess().getValue())) {
+//                            //加载弹窗，禁用按钮点击
+//                            showTipDialog();
+//                            mBinding.btnLogin.setClickable(false);
+//                        }
+//                    }
+//                }
+//            }
+//        });
+//
+//        //注册信息
+//        mLoginViewModel.getRegisterMsg().observe(context, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                dismissLoading();
+//                showCustomMsg(s, 1500);
+//            }
+//        });
+//    }
+
+//    /**
+//     * 去注册
+//     */
+//    private void toRegister() {
+//        mLoginViewModel.register(new WanAndroidRegisterRequestBean(
+//                mLoginViewModel.getUser().getValue().getAccount(),
+//                mLoginViewModel.getUser().getValue().getPwd(),
+//                mLoginViewModel.getUser().getValue().getPwd()
+//        ));
+//    }
+
+//    /**
+//     * 展示对话框
+//     */
+//    private void showTipDialog() {
+//        DialogShowRegisterTipBinding binding = DataBindingUtil.inflate(
+//                LayoutInflater.from(this), R.layout.dialog_show_register_tip,
+//                null, false);
+//
+//        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//        builder.setContentView(binding.getRoot())
+//                .addDefaultAnimation()
+//                .setCancelable(true)
+//                .setWidthAndHeight(SizeUtil.dp2px(this, 300), LinearLayout.LayoutParams.WRAP_CONTENT)
+//                .setOnClickListener(R.id.tv_cancel, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        //取消弹窗，恢复点击
+//                        mDialog.dismiss();
+//                        mBinding.btnLogin.setClickable(true);
+//                    }
+//                })
+//                .setOnClickListener(R.id.tv_sure, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        toRegister();//注册
+//                        showLoading(false);
+//                        mDialog.dismiss();
+//                        mBinding.btnLogin.setClickable(true);
+//                    }
+//                })
+//                .setText(R.id.et_content, getString(R.string.dialog_tip_register_text));
+//        if (mDialog == null) {
+//            mDialog = builder.create(); // 创建AlertDialog对象
+//        }
+//        if (!mDialog.isShowing()) {
+//            mDialog.show(); // 显示对话框
+//        }
+//    }
+
     /**
-     * 登录相关
+     * 注册监听
      */
-    private void login() {
-        //按钮监听
-        mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mLoginViewModel.getUser().getValue().getAccount().isEmpty()) {
-                    showCustomMsg(getString(R.string.please_input_username),1500);
-                    return;
-                }
-                if (mLoginViewModel.getUser().getValue().getPwd().isEmpty()) {
-                    showCustomMsg(getString(R.string.please_input_password),1500);
-                    return;
-                }
-                //加载和禁用按钮防止多次点击
-                showLoading(false);
-                mBinding.btnLogin.setClickable(false);
-                //调用接口登录
-                mLoginViewModel.login(new WanAndroidLoginRequestBean(
-                        mLoginViewModel.getUser().getValue().getAccount(),
-                        mLoginViewModel.getUser().getValue().getPwd()));
-            }
-        });
-
-        //登录信息
-        mLoginViewModel.getIsLoginSuccess().observe(context, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if (aBoolean) {
-                    //登录成功
-                    MVUtils.put(Constant.IS_LOGIN, true);
-                    jumpActivityFinish(HomeActivity.class);
-                }
-            }
-        });
-
-        //登录信息回调变化
+    private void initObserver(){
         mLoginViewModel.getLoginMsg().observe(context, new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                KLog.i("TAGG", mLoginViewModel.getLoginMsg().getValue());
-                showCustomMsg(mLoginViewModel.getLoginMsg().getValue(), 1500);
-                //取消加载，恢复按钮点击
-                dismissLoading();
-                mBinding.btnLogin.setClickable(true);
-            }
-        });
-    }
-
-    /**
-     * 注册相关
-     */
-    private void register() {
-        mLoginViewModel.getLoginCount().observe(context, new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                KLog.i("TAGG", String.valueOf(integer));
-                if (integer >= 3) {
-                    if (Boolean.FALSE.equals(mLoginViewModel.getIsRegister().getValue())) {
-                        //点击了三次还是没登录成功
-                        if (Boolean.FALSE.equals(mLoginViewModel.getIsLoginSuccess().getValue())) {
-                            //加载弹窗，禁用按钮点击
-                            showTipDialog();
-                            mBinding.btnLogin.setClickable(false);
-                        }
-                    }
+                switch (s){
+                    case ToastConstant.LOGIN_SUCCESS:
+                        showCustomMsg(getString(R.string.login_success),1500);
+                        jumpActivityFinish(HomeActivity.class);
+                        return;
+                    case ToastConstant.LOGIN_FAIL:
+                        showCustomMsg(getString(R.string.login_fail),1500);
+                        return;
+                    default:
+                        showCustomMsg(s,1500);
+                        break;
                 }
-            }
-        });
-
-        //注册信息
-        mLoginViewModel.getRegisterMsg().observe(context, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
                 dismissLoading();
-                showCustomMsg(s, 1500);
             }
         });
     }
 
     /**
-     * 去注册
+     * 注册点击
      */
-    private void toRegister() {
-        mLoginViewModel.register(new WanAndroidRegisterRequestBean(
-                mLoginViewModel.getUser().getValue().getAccount(),
-                mLoginViewModel.getUser().getValue().getPwd(),
-                mLoginViewModel.getUser().getValue().getPwd()
-        ));
-    }
+    private void initClick(){
+        //登录按钮
+        mBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLoading(false);
+                mLoginViewModel.login();
+            }
+        });
 
-    /**
-     * 展示对话框
-     */
-    private void showTipDialog() {
-        DialogShowRegisterTipBinding binding = DataBindingUtil.inflate(
-                LayoutInflater.from(this), R.layout.dialog_show_register_tip,
-                null, false);
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setContentView(binding.getRoot())
-                .addDefaultAnimation()
-                .setCancelable(true)
-                .setWidthAndHeight(SizeUtil.dp2px(this, 300), LinearLayout.LayoutParams.WRAP_CONTENT)
-                .setOnClickListener(R.id.tv_cancel, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //取消弹窗，恢复点击
-                        mDialog.dismiss();
-                        mBinding.btnLogin.setClickable(true);
-                    }
-                })
-                .setOnClickListener(R.id.tv_sure, new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        toRegister();//注册
-                        showLoading(false);
-                        mDialog.dismiss();
-                        mBinding.btnLogin.setClickable(true);
-                    }
-                })
-                .setText(R.id.et_content, getString(R.string.dialog_tip_register_text));
-        if (mDialog == null) {
-            mDialog = builder.create(); // 创建AlertDialog对象
-        }
-        if (!mDialog.isShowing()) {
-            mDialog.show(); // 显示对话框
-        }
+        //去注册按钮
+        mBinding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //跳转
+                mBinding.etAccount.setText("");
+                mBinding.etPwd.setText("");
+                jumpActivity(RegisterActivity.class);
+            }
+        });
     }
 
     private long timeMillis;

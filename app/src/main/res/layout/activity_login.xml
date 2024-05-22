@@ -29,7 +29,7 @@
             android:maxLines="1"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:text="@={viewModel.user.account}"
+            android:text="@={viewModel.loginBean.username}"
             android:textAllCaps="false"
             android:textColor="@color/bg_login_btn"
             android:textColorHint="@color/bg_login_btn_hint"
@@ -46,7 +46,7 @@
             android:maxLines="1"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
-            android:text="@={viewModel.user.pwd}"
+            android:text="@={viewModel.loginBean.password}"
             android:textColor="@color/bg_login_btn"
             android:textColorHint="@color/bg_login_btn_hint"
             android:textSize="16sp" />
@@ -60,6 +60,15 @@
             android:text="@string/login"
             android:textColor="@color/login_btn_text"
             android:textSize="18sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_user_to_login"
+            android:background="@null"
+            android:textColor="@color/gray"
+            android:textSize="13sp"
+            android:id="@+id/btn_register"/>
 
 
         <!--        <com.google.android.material.textfield.TextInputLayout-->

@@ -25,6 +25,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 
@@ -179,8 +180,14 @@ public class NewsRepository {
      */
     @SuppressLint("CheckResult")
     public void getNewsFromInternet(String name, int num, int start) {
+        Observable<Result<NewsResponseBean>> list;
+        if (name==null||name.equals("")){
+           list = NetworkApi.createService(INews.class, NetworkApi.NEWS).getNewsList(INews.KEY, num, start);
+        }else {
+            list = NetworkApi.createService(INews.class, NetworkApi.NEWS).getNewsList(INews.KEY, name,num, start);
+        }
         List<News> news = new ArrayList<>();//临时保存数据
-        NetworkApi.createService(INews.class, NetworkApi.NEWS).getNewsList(INews.KEY, num, start).compose(NetworkApi.applySchedulers(new BaseObserver<Result<NewsResponseBean>>() {
+        list.compose(NetworkApi.applySchedulers(new BaseObserver<Result<NewsResponseBean>>() {
             @Override
             public void onSuccess(Result<NewsResponseBean> newsResponseBeanResult) {
                 if (newsResponseBeanResult.getCode() == 1) {

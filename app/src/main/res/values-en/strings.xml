@@ -19,7 +19,10 @@
     <string name="daily_english_source">Source: %s</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="repassword">Please enter your password again</string>
     <string name="login">Login</string>
+    <string name="register">register</string>
+    <string name="no_user_to_login">Not registered yet? Go register</string>
     <string name="please_input_username">Please enter your username</string>
     <string name="please_input_password">Please enter your password</string>
     <string name="dialog_tip_title">Friendly Reminder</string>
@@ -29,4 +32,10 @@
     <string name="navigation_menu_picture">Picture</string>
     <string name="navigation_menu_info">Real-time Info</string>
     <string name="navigation_menu_content">Daily statement</string>
+
+    <!--Toast-->
+    <string name="register_fail">Registration failed!</string>
+    <string name="register_success">Registration successful, please log in with the registered account and password!</string>
+    <string name="login_success">Login successful!</string>
+    <string name="login_fail">Login failed!</string>
 </resources>
